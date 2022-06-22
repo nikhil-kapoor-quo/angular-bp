@@ -1,13 +1,18 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UserService } from './services/user.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomHttpInterceptor } from './http.interceptor';
+import { CommonErrorHandler } from './services/error.service';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule
   ],
-  providers: [UserService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: CommonErrorHandler }
+  ]
 })
-export class CoreModule {}
+export class CoreModule { }

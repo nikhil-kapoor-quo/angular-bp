@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanLoad } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SessionTokens } from '../constants/session.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,10 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanLoad {
 
   canLoad(): Observable<boolean> | Promise<boolean> | boolean {
-    console.log('guard reached');
-    return true;
+    if (sessionStorage.getItem(SessionTokens.AccessToken)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
