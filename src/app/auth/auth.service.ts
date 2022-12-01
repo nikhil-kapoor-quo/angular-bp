@@ -8,4 +8,12 @@ export class AuthService implements HttpBaseService {
     login(): Observable<boolean> {
         return of(true)
     }
+
+    reset(): Observable<boolean> {
+        return of(true)
+    }
+
+    changePassword(): Observable<boolean> {
+        return of(true)
+    }
 }

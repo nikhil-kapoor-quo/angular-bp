@@ -9,19 +9,22 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ForgotPasswordComponent implements OnInit {
   public forgotForm: FormGroup;
+  public showAlert: boolean;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     this.forgotForm = new FormGroup({
-      phone: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required)
     });
   }
 
   public forgot(): void {
-    console.log(this.forgotForm.value);
-    this.router.navigate(['auth/login']);
+    if(this.forgotForm.valid) {
+      this.router.navigate(['auth/change-password']);
+    } else {
+      this.showAlert = true;
+    }
   }
 
   public goToLogin(): void {
