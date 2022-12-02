@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent implements OnInit {
-  public resetForm: FormGroup;
+  public resetForm: UntypedFormGroup;
   public showAlert: boolean;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.resetForm = new FormGroup({
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required)
+    this.resetForm = new UntypedFormGroup({
+      password: new UntypedFormControl('', Validators.required),
+      confirmPassword: new UntypedFormControl('', Validators.required)
     });
   }
 

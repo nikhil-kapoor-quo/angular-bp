@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -8,17 +8,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  public signupForm: FormGroup;
+  public signupForm: UntypedFormGroup;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.signupForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.email),
-      phone: new FormControl('', Validators.required),
-      dob: new FormControl('')
+    this.signupForm = new UntypedFormGroup({
+      firstName: new UntypedFormControl('', Validators.required),
+      lastName: new UntypedFormControl('', Validators.required),
+      email: new UntypedFormControl('', Validators.email),
+      phone: new UntypedFormControl('', Validators.required),
+      dob: new UntypedFormControl('')
     });
   }
 
