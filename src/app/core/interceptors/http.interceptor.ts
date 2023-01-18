@@ -2,7 +2,7 @@ import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { SessionTokens } from './constants/session.constant';
+import { SessionTokens } from '../constants/session.constant';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
@@ -19,7 +19,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
         }
         return next.handle(request).pipe(
             catchError(response => {
-                alert(response.error || 'Oops, Somthing went wrong.');
+                alert(response.error || 'Oops, Something went wrong.');
                 return throwError(response);
             })
         );
